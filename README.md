@@ -28,18 +28,19 @@
 
 #### Wireframe
 ##### Homepage:
-
+![homepage](homepage.png)
 
 ##### P1:
-
+![horror](horror.png)
 
 ##### P2:
-
+![action](action.png)
 
 ##### P3:
-
+![romance](romance.png)
 
 ##### P4:
 
-
+![comedy](comedy.png)
 ##### P5
+![aboutus](aboutus.png)
