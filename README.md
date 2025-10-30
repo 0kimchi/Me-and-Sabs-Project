@@ -30,17 +30,17 @@
 ##### Homepage:
 ![homepage](homepage.png)
 
-##### P1:
+##### P1(Horror):
 ![horror](horror.png)
 
-##### P2:
+##### P2(Action):
 ![action](action.png)
 
-##### P3:
+##### P3(Romance):
 ![romance](romance.png)
 
-##### P4:
+##### P4(Comedy):
 
 ![comedy](comedy.png)
-##### P5
+##### P5(Sources and About Us):
 ![aboutus](aboutus.png)
