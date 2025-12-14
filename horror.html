@@ -3,17 +3,188 @@
 <head>
     <title>Horror</title>
     <style>
-        body {
-            background: #111;
-            color: white;
-            font-family: Arial;
-            margin: 0;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        html, body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #000;
+  background: rgba(0, 0, 0, 1);
+  overflow-x: hidden; 
+}
 
+.fogwrapper {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  -webkit-filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+  filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+}
+#foglayer_01, #foglayer_02, #foglayer_03 {
+  height: 100%;
+  position: absolute;
+  width: 200%;
+}
+#foglayer_01 .image01, #foglayer_01 .image02,
+#foglayer_02 .image01, #foglayer_02 .image02,
+#foglayer_03 .image01, #foglayer_03 .image02 {
+  float: left;
+  height: 100%;
+  width: 160%;
+}
+#foglayer_01 {
+  -webkit-animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+  -moz-animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+  animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+}
+#foglayer_02, #foglayer_03 {
+  -webkit-animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+  -moz-animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+  animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+}
+
+
+#foglayer_01 .image01, #foglayer_01 .image02 {
+  background: url("https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png") center center/cover no-repeat transparent;
+}
+#foglayer_02 .image01, #foglayer_02 .image02,
+#foglayer_03 .image01, #foglayer_03 .image02{
+  background: url("https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog2.png") center center/cover no-repeat transparent;
+}
+
+@-webkit-keyframes foglayer_01_opacity {
+  0% { opacity: .1; }
+  22% { opacity: .5; }
+  40% { opacity: .28; }
+  58% { opacity: .4; }
+  80% { opacity: .16; }
+  100% { opacity: .1; }
+}
+@-moz-keyframes foglayer_01_opacity {
+  0% { opacity: .1; }
+  22% { opacity: .5; }
+  40% { opacity: .28; }
+  58% { opacity: .4; }
+  80% { opacity: .16; }
+  100% { opacity: .1; }
+}
+@-o-keyframes foglayer_01_opacity {
+  0% { opacity: .1; }
+  22% { opacity: .5; }
+  40% { opacity: .28; }
+  58% { opacity: .4; }
+  80% { opacity: .16; }
+  100% { opacity: .1; }
+}
+@keyframes foglayer_01_opacity {
+  0% { opacity: .1; }
+  22% { opacity: .5; }
+  40% { opacity: .28; }
+  58% { opacity: .4; }
+  80% { opacity: .16; }
+  100% { opacity: .1; }
+}
+/* ---------- Keyframe Layer 2 ---------- */
+@-webkit-keyframes foglayer_02_opacity {
+  0% { opacity: .5; }
+  25% { opacity: .2; }
+  50% { opacity: .1; }
+  80% { opacity: .3; }
+  100% { opacity: .5; }
+}
+@-moz-keyframes foglayer_02_opacity {
+  0% { opacity: .5; }
+  25% { opacity: .2; }
+  50% { opacity: .1; }
+  80% { opacity: .3; }
+  100% { opacity: .5; }
+}
+@-o-keyframes foglayer_02_opacity {
+  0% { opacity: .5; }
+  25% { opacity: .2; }
+  50% { opacity: .1; }
+  80% { opacity: .3; }
+  100% { opacity: .5; }
+}
+@keyframes foglayer_02_opacity {
+  0% { opacity: .5; }
+  25% { opacity: .2; }
+  50% { opacity: .1; }
+  80% { opacity: .3; }
+  100% { opacity: .5; }
+}
+/* ---------- Keyframe Layer 3 ---------- */
+@-webkit-keyframes foglayer_03_opacity {
+  0% { opacity: .8 }
+  27% { opacity: .2; }
+  52% { opacity: .6; }
+  68% { opacity: .3; }
+  100% { opacity: .8; }
+}
+@-moz-keyframes foglayer_03_opacity {
+  0% { opacity: .8 }
+  27% { opacity: .2; }
+  52% { opacity: .6; }
+  68% { opacity: .3; }
+  100% { opacity: .8; }
+}
+@-o-keyframes foglayer_03_opacity {
+  0% { opacity: .8 }
+  27% { opacity: .2; }
+  52% { opacity: .6; }
+  68% { opacity: .3; }
+  100% { opacity: .8; }
+}
+@keyframes foglayer_03_opacity {
+  0% { opacity: .8; }
+  27% { opacity: .2; }
+  52% { opacity: .6; }
+  68% { opacity: .3; }
+  100% { opacity: .8; }
+}
+@-webkit-keyframes foglayer_moveme {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+@-moz-keyframes foglayer_moveme {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+@-o-keyframes foglayer_moveme {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+@keyframes foglayer_moveme {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+
+@media only screen
+  and (min-width: 280px)
+  and (max-width: 767px) {
+    #foglayer_01 .image01, #foglayer_01 .image02,
+    #foglayer_02 .image01, #foglayer_02 .image02,
+    #foglayer_03 .image01, #foglayer_03 .image02 {
+      width: 100%;
+    }
+  }
+        body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    background-image:url(https://media1.tenor.com/m/YIEThRIbfkUAAAAC/rian-cementerio.gif);
+    background-size: 110%;
+    background-repeat: no-repeat;
+    transition: background-image 0.6s ease, background-color 0.6s ease;
+
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+        }
         .movie-container {
             display: flex;
             gap: 20px;
@@ -21,8 +192,10 @@
         }
 
         .movie {
-            width: 130px;
-            height: 180px;
+             overflow: hidden;
+    z-index: 2;
+            width: 250px;
+            height: 350px;
             background: white;
             color: black;
             border-radius: 10px;
@@ -52,18 +225,52 @@
             display: none;
             box-shadow: 0 0 10px rgba(255,255,255,0.4);
         }
+        
+
     </style>
 </head>
+
 <body>
+           <div id="foglayer_01" class="fog">
+  <div class="image01"></div>
+  <div class="image02"></div>
+</div>
+<div id="foglayer_02" class="fog">
+  <div class="image01"></div>
+  <div class="image02"></div>
+</div>
+<div id="foglayer_03" class="fog">
+  <div class="image01"></div>
+  <div class="image02"></div>
+</div> 
+<style>
+
+body:before {
+content: " ";
+height: 100vh;
+width: 100vw;
+display: block;
+position: fixed; 
+top: 0; 
+left: 0; 
+z-index: 100;
+background-image: url('https://media1.tenor.com/m/3IMnx3vl2LwAAAAC/i-can-see-you-dark.gif');
+background-size: cover;
+background-repeat: no-repeat;
+background-position:center;
+animation: yourAnimation 2s ease 2s 1 normal forwards;
+pointer-events: none;}
+@keyframes yourAnimation { 0.0%{ opacity: 1;} 75%{ opacity: 1; } 100%{ opacity: 0;} } 
+</style>
 
     <h1>Select a Movie!</h1>
 
     <div class="movie-container">
-        <div class="movie" data-desc="Description of Movie 1">Movie 1</div>
-        <div class="movie" data-desc="Description of Movie 2">Movie 2</div>
-        <div class="movie" data-desc="Description of Movie 3">Movie 3</div>
-        <div class="movie" data-desc="Description of Movie 4">Movie 4</div>
-        <div class="movie" data-desc="Description of Movie 5">Movie 5</div>
+        <div class="movie" data-desc="Description of Movie 1"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45xEGCwLnPgMbVMRnfvY_C3BNhpQKU9M8Twvz9S4EJYioJdNbZ8d3G4GCRYJCCHZDcXiJ&s=10" width="250" height="350"></div>
+        <div class="movie" data-desc="Description of Movie 2"><img src="https://resizing.flixster.com/K525zt73ek8gUyuGYiYa172O4sY=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p22546_p_v8_ap.jpg" width="250" height="350"></div>
+        <div class="movie" data-desc="Description of Movie 3"><img src="https://image.tmdb.org/t/p/original/oOwPCD4JwjptKlkXe7JB7Hq3kbT.jpg" width="250" height="350"> </div>
+        <div class="movie" data-desc="Description of Movie 4"><img src="https://m.media-amazon.com/images/M/MV5BNzk0Y2RlZjItZDUzYi00Y2JhLTk5MzMtNjgzYWFmZmUxN2FmXkEyXkFqcGc@._V1_.jpg" width="250"height="350"></div>
+        <div class="movie" data-desc="Description of Movie 5"><img src="https://m.media-amazon.com/images/M/MV5BNjgwYTI0YjctMWYzNS00MmI1LWI5YTctNmE1YjBkNDFlNWMxXkEyXkFqcGc@._V1_.jpg"width="250"height="350"></div>
     </div>
 
     <div class="description" id="descriptionBox"></div>
