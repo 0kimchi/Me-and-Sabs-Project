@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Imperial+Script&family=Rubik+Glitch&family=Splash&family=Zen+Dots&display=swap" rel="stylesheet">
+
     <title>Action</title>
     <style>
+        h1{
+            font-family: 'Zen Dots', cursive;
+            font-size: 60px;
+            color: rgb(255, 255, 255);
+            text-shadow: 2px 2px 4px #00ffd5;
+            margin-top: 10px;
+        }
         body {
             background-image: url(https://media1.tenor.com/m/QZ-cVGVewUMAAAAC/running-away-ethan-hunt.gif);
             background-repeat: no-repeat;
             background-size: cover;
-    
+            min-height: 100vh;
+
             color: white;
             font-family: Arial;
             margin: 0;
@@ -33,7 +45,7 @@
             border-radius: 10px;
             font-weight: bold;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             cursor: pointer;
             position: relative;
@@ -44,55 +56,241 @@
             transform: scale(1.08);
         }
 
-        .description {
+      .description {
             position: fixed;
             bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 400px;
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             color: black;
             padding: 15px;
-            border-radius: 20px;
+            border-radius: 10px;
             font-size: 14px;
-            text-align: center;
+            text-align: left;
             display: none;
-            box-shadow: 0 0 10px rgba(255,255,255,0.4);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 15;
         }
+
+        .description h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .description p {
+            margin: 5px 0;
+        }
+
+        .description strong {
+            font-weight: bold;
+        }
+             #menuBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 20;
+    user-select: none;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px; 
+    width: 250px;
+    height: 100vh;
+    background: #850404;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    transition: right 0.3s ease;
+    z-index: 10;
+}
+
+#sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 20px;
+    transition: background 0.2s;
+}
+
+#sidebar a:hover {
+    text-decoration: underline;
+    text-transform: bold;
+}
+
+#sidebar.open {
+    right: 0;
+}
+
+    .dropdown {
+    position: relative;
+    margin-top: 175px;
+}
+
+.dropbtn {
+    background-color: #850404;
+    color: white;
+    padding: 15px 25px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #3a0808;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #200202;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    text-decoration: underline;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+              .description {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: left;
+    display: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 15;
+}
+
+
     </style>
 </head>
 <body>
 
     <h1>Select a Movie!</h1>
+    
 
     <div class="movie-container">
-        <div class="movie" data-desc="Description of Movie 1"><img src="https://image.tmdb.org/t/p/original/r6q9wZK5a2K51KFj4LWVID6Ja1r.jpg" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 2"><img src="https://image.tmdb.org/t/p/original/l5uxY5m5OInWpcExIpKG6AR3rgL.jpg" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 3"><img src="https://oyster.ignimgs.com/wordpress/stg.ign.com/2019/12/EL1TuJCWsAENhm6.jpg" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 4"><img src="https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_.jpg" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 5"><img src="https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="Kingsman: The Secret Service (R)| Gary 'Eggsy' Unwin (Taron Egerton), whose late father secretly worked for a spy organization, lives in a South London housing estate and seems headed for a life behind bars. However, dapper agent Harry Hart (Colin Firth) recognizes potential in the youth and recruits him to be a trainee in the secret service. Meanwhile, villainous Richmond Valentine (Samuel L. Jackson) launches a diabolical plan to solve the problem of climate change via a worldwide killing spree.| Colin Firth, Samuel L. Jackson, Mark Strong, Taron Egerton, Michael Caine | 7.7/10 on IMDb, 75% on Rotten Tomatoes"><img src="https://image.tmdb.org/t/p/original/r6q9wZK5a2K51KFj4LWVID6Ja1r.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="Mission: Impossible (PG-13) | When U.S. government operative Ethan Hunt (Tom Cruise) and his mentor, Jim Phelps (Jon Voight), go on a covert assignment that takes a disastrous turn, Jim is killed, and Ethan becomes the prime murder suspect. Now a fugitive, Hunt recruits brilliant hacker Luther Stickell (Ving Rhames) and maverick pilot Franz Krieger (Jean Reno) to help him sneak into a heavily guarded CIA building to retrieve a confidential computer file that will prove his innocence.| Tom Cruise, Jon Voight, Ving Rhames, Jean Reno | 7.2/10 on IMDb, 67% on Rotten Tomatoes"><img src="https://image.tmdb.org/t/p/original/l5uxY5m5OInWpcExIpKG6AR3rgL.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="Top Gun: Maverick (PG-13)| After more than 30 years of service as one of the Navy's top aviators, Pete 'Maverick' Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him. Training a detachment of graduates for a special assignment, Maverick must confront the ghosts of his past and his deepest fears, culminating in a mission that demands the ultimate sacrifice from those who choose to fly it. | Tom Cruise, Miles Teller, Jennifer Connelly, Jon Hamm, Glen Powell, Ed Harris, Val Kilmer |8.2/10 on IMDb, 96% on Rotten Tomatoes"><img src="https://oyster.ignimgs.com/wordpress/stg.ign.com/2019/12/EL1TuJCWsAENhm6.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="The Matrix (R) | Neo believes that Morpheus, an elusive figure considered to be the most dangerous man alive, can answer his question -- What is the Matrix? Neo is contacted by Trinity, a beautiful stranger who leads him into an underworld where he meets Morpheus. They fight a brutal battle for their lives against a cadre of viciously intelligent secret agents. It is a truth that could cost Neo something more precious than his life. | Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving, Joe Pantoliano | 8.7/10 on IMDb, 83% on Rotten Tomatoes"><img src="https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="John Wick (R)| Legendary assassin John Wick (Keanu Reeves) retired from his violent career after marrying the love of his life. Her sudden death leaves John in deep mourning. When sadistic mobster Iosef Tarasov (Alfie Allen) and his thugs steal John's prized car and kill the puppy that was a last gift from his wife, John unleashes the remorseless killing machine within and seeks vengeance. Meanwhile, Iosef's father (Michael Nyqvist) -- John's former colleague -- puts a huge bounty on John's head.|Keanu Reeves, Michael Nyqvist, Alfie Allen, Adrianne Palicki, Bridget Moynahan, Dean Winters, Ian McShane, John Leguizamo, Willem Dafoe | 7.5/10 on IMDb, 86% on Rotten Tomatoes"><img src="https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_.jpg" height="350" width="250"></div>
     </div>
 
     <div class="description" id="descriptionBox"></div>
+    <a href="homepage.html">
+  <img src="logo.png" alt="CineVerse Logo" style="position: absolute; top: 20px; left: 20px; width: 150px; z-index: 5;"></a>
+  
+<div id="menuBtn">
+    ☰
+</div>
+<div id="sidebar">
+    <img src="logo.png" alt="CineVerse Logo" style="position: absolute; top: 20px; left: 20px; width: 150px; z-index: 5;">
 
-    <script>
-        const movies = document.querySelectorAll(".movie");
-        const descBox = document.getElementById("descriptionBox");
+    <a href="sources.html" style="position: absolute; z-index: 5; margin-top: 40px;">
+        Sources!
+    </a>
 
-        movies.forEach(movie => {
-            movie.addEventListener("mouseover", () => {
-                descBox.style.display = "block";
-                descBox.textContent = movie.getAttribute("data-desc");
-            });
+    <a href="aboutus.html" style="position: absolute; z-index: 5; margin-top: 100px;">
+        About Us!
+    </a>
+     <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Genre Shortcut :3</a>
+        <div class="dropdown-content">
+            <a href="action.html">Action</a>
+            <a href="horror.html">Horror</a>
+            <a href="romance.html">Romance</a>
+            <a href="comedy.html">Comedy</a>
+        </div>
+    </div>
 
-            movie.addEventListener("mouseout", () => {
-                descBox.style.display = "none";
-            });
+      <script>
+       const movies = document.querySelectorAll(".movie");
+const descBox = document.getElementById("descriptionBox");
 
-            movie.addEventListener("click", () => {
-                alert(movie.textContent + "  Must like this movie huh? :D");
-          
-            });
-        });
+movies.forEach(movie => {
+    movie.addEventListener("mouseover", () => {
+        const movieDetails = movie.getAttribute("data-desc").split("|");
+
+        const title = movieDetails[0];
+        const synopsis = movieDetails[1];
+        const cast = movieDetails[2];
+        const rating = movieDetails[3];
+
+        descBox.innerHTML = `
+            <h3>${title}</h3>
+            <p><strong>Synopsis:</strong> ${synopsis}</p>
+            <p><strong>Cast:</strong> ${cast}</p>
+            <p><strong>Rating:</strong> ${rating}</p>
+        `;
+
+        descBox.style.display = "block";
+    });
+
+    movie.addEventListener("mouseout", () => {
+        descBox.style.display = "none";
+    });
+});
+
     </script>
+  <script>
+  const menuBtn = document.getElementById("menuBtn");
+  const sidebar = document.getElementById("sidebar");
+
+  menuBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+  });
+</script>
+
+
+</body>
+<script>
+  const dropdown = document.querySelectorAll(".dropdown");
+
+  dropdown.forEach(item => {
+    const dropdownBtn = item.querySelector(".dropbtn");
+    const dropdownContent = item.querySelector(".dropdown-content");
+
+    dropdownBtn.addEventListener("click", () => {
+      dropdownContent.classList.toggle("show");
+    });
+  });
+  
+</script>
+
+    </div>
+    </script>
+    <footer>© 2025 Cineverse. All rights reserved.</footer>
 
 </body>
 </html>

@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Imperial+Script&family=Rubik+Glitch&family=Splash&display=swap" rel="stylesheet">
+
     <title>Romance</title>
     <style>
+        h1 {
+            font-family: 'Imperial Script', cursive;
+            font-size: 60px;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            margin-top: 10px;
+        }
         body {
             background-image: url(https://media1.tenor.com/m/j_00kT9g5UkAAAAd/happy-couple-at-the-beach-allie.gif);
             background-repeat: no-repeat;
@@ -14,6 +25,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
 
          .movie-container {
@@ -44,18 +56,124 @@
         }
 
         .description {
-            position: fixed;
-            bottom: 40px;
-            width: 400px;
-            background: white;
-            color: black;
-            padding: 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            text-align: center;
-            display: none;
-            box-shadow: 0 0 10px rgba(255,255,255,0.4);
-        }
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: left;
+    display: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 15;
+}
+
+.description h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.description p {
+    margin: 5px 0;
+}
+
+.description strong {
+    font-weight: bold;
+}
+
+          #menuBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 20;
+    user-select: none;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px; 
+    width: 250px;
+    height: 100vh;
+    background: #850404;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    transition: right 0.3s ease;
+    z-index: 10;
+}
+
+#sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 20px;
+    transition: background 0.2s;
+}
+
+#sidebar a:hover {
+    text-decoration: underline;
+    text-transform: bold;
+}
+
+#sidebar.open {
+    right: 0;
+}
+
+    .dropdown {
+    position: relative;
+    margin-top: 175px;
+}
+
+.dropbtn {
+    background-color: #850404;
+    color: white;
+    padding: 15px 25px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #3a0808;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #200202;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    text-decoration: underline;
+}
+
+.dropdown-content.show {
+    display: block;
+}
     </style>
 </head>
 <body>
@@ -63,34 +181,94 @@
     <h1>Select a Movie!</h1>
 
     <div class="movie-container">
-        <div class="movie" data-desc="Description of Movie 1"><img src="https://image.tmdb.org/t/p/original/wbvboxr6xmdSbMEBKzXVWgAwJ1Q.jpg" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 2"><img src="https://image.tmdb.org/t/p/original/mKrdarFQ6H4E9HR02YiubLABXSZ.jpg" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 3"><img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p22802_p_v10_ak.jpg" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 4"><img src="https://a.ltrbxd.com/resized/film-poster/5/1/5/7/7/51577-d-e-b-s--0-1000-0-1500-crop.jpg?v=f3585ff569" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 5"><img src="https://image.tmdb.org/t/p/original/phB6HufNU537jBOoYIDWRHWG6SQ.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="The Notebook (PG-13)| In 1940s South Carolina, mill worker Noah Calhoun (Ryan Gosling) and rich girl Allie (Rachel McAdams) are desperately in love. But her parents don't approve. When Noah goes off to serve in World War II, it seems to mark the end of their love affair. In the interim, Allie becomes involved with another man (James Marsden). But when Noah returns to their small town years later, on the cusp of Allie's marriage, it soon becomes clear that their romance is anything but over. | Ryan Gosling, Rachel McAdams, James Marsden, James Garner, Gena Rowlands, Kevin Connolly, Sam Shepard, Joan Allen | 7.8/10 on IMDb, 54% on Rotten Tomatoes"><img src="https://image.tmdb.org/t/p/original/wbvboxr6xmdSbMEBKzXVWgAwJ1Q.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="500 Days of Summer (PG-13) | Tom (Joseph Gordon-Levitt), greeting-card writer and hopeless romantic, is caught completely off-guard when his girlfriend, Summer (Zooey Deschanel), suddenly dumps him. He reflects on their 500 days together to try to figure out where their love affair went sour, and in doing so, Tom rediscovers his true passions in life. | Joseph Gordon-Levitt, Zooey Deschanel| 7.6/10 on IMDb, 86% on Rotten Tomatoes"><img src="https://image.tmdb.org/t/p/original/mKrdarFQ6H4E9HR02YiubLABXSZ.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="10 Things I Hate About You (PG-13) | Kat Stratford is beautiful, smart and quite abrasive to most of her fellow teens, meaning that she doesn't attract many boys. Unfortunately for her younger sister, Bianca, house rules say that she can't date until Kat has a boyfriend, so strings are pulled to set the dour damsel up for a romance. Soon Kat crosses paths with handsome new arrival Patrick Verona. Kat may let her guard down enough to fall for the effortlessly charming Patrick.| Julia Stiles, Heath Ledger, Joseph Gordon-Levitt, Larisa Oleynik, Larry Miller, Andrew Keegan, David Krumholtz, Susan May Pratt, Gabrielle Union | 7.4/10 on IMDb, 72% on Rotten Tomatoes"><img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p22802_p_v10_ak.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="D.E.B.S. (PG-13) | A group of girls are recruited by the government to become secret agents. The star (Sara Foster) of a team of teenage crimefighters falls for the alluring villainess (Jordana Brewster) she must bring to justice.| Sara Foster, Jordana Brewster, Meagan Good, Devon Aoki, Jill Ritchie |5.5/10 on IMDb, 43% on Rotten Tomatoes"><img src="https://a.ltrbxd.com/resized/film-poster/5/1/5/7/7/51577-d-e-b-s--0-1000-0-1500-crop.jpg?v=f3585ff569" height="350" width="250"></div>
+        <div class="movie" data-desc="But I'm a Cheerleader (PG-13) |Megan (Natasha Lyonne) considers herself a typical American girl. She excels in school and cheerleading, and she has a handsome football-playing boyfriend, even though she isn't that crazy about him. So she's stunned when her parents decide she's gay and send her to True Directions, a boot camp meant to alter her sexual orientation. While there, Megan meets a rebellious and unashamed teen lesbian, Graham (Clea DuVall). Though Megan still feels confused, she starts to have feelings for Graham.| Natasha Lyonne, Clea DuVall, Melanie Lynskey, RuPaul (yes, THE RuPaul) Charles, Eddie Cibrain, Wesley Mann, Richard Moll, Douglas Spain, Katharine Towne, Cathy Moriarty | 6.8/10 on IMDb, 43% on Rotten Tomatoes"><img src="https://image.tmdb.org/t/p/original/phB6HufNU537jBOoYIDWRHWG6SQ.jpg" height="350" width="250"></div>
     </div>
 
     <div class="description" id="descriptionBox"></div>
+<a href="homepage.html">
+  <img src="logo.png" alt="CineVerse Logo" style="position: absolute; top: 20px; left: 20px; width: 150px; z-index: 5;"></a>
 
+<div id="menuBtn">
+    ☰
+</div>
+<div id="sidebar">
+    <img src="logo.png" alt="CineVerse Logo" style="position: absolute; top: 20px; left: 20px; width: 150px; z-index: 5;">
+
+    <a href="sources.html" style="position: absolute; z-index: 5; margin-top: 40px;">
+        Sources!
+    </a>
+
+    <a href="aboutus.html" style="position: absolute; z-index: 5; margin-top: 100px;">
+        About Us!
+    </a>
+     <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Genre Shortcut :3</a>
+        <div class="dropdown-content">
+            <a href="action.html">Action</a>
+            <a href="horror.html">Horror</a>
+            <a href="romance.html">Romance</a>
+            <a href="comedy.html">Comedy</a>
+        </div>
     <script>
-        const movies = document.querySelectorAll(".movie");
-        const descBox = document.getElementById("descriptionBox");
+       const movies = document.querySelectorAll(".movie");
+const descBox = document.getElementById("descriptionBox");
 
-        movies.forEach(movie => {
-            movie.addEventListener("mouseover", () => {
-                descBox.style.display = "block";
-                descBox.textContent = movie.getAttribute("data-desc");
-            });
+movies.forEach(movie => {
+    movie.addEventListener("mouseover", () => {
+        const movieDetails = movie.getAttribute("data-desc").split("|");
 
-            movie.addEventListener("mouseout", () => {
-                descBox.style.display = "none";
-            });
+        const title = movieDetails[0];
+        const synopsis = movieDetails[1];
+        const cast = movieDetails[2];
+        const rating = movieDetails[3];
 
-            movie.addEventListener("click", () => {
-                alert(movie.textContent + "   Must like this movie huh? :D");
-            });
-        });
+        descBox.innerHTML = `
+            <h3>${title}</h3>
+            <p><strong>Synopsis:</strong> ${synopsis}</p>
+            <p><strong>Cast:</strong> ${cast}</p>
+            <p><strong>Rating:</strong> ${rating}</p>
+        `;
+
+        descBox.style.display = "block";
+    });
+
+    movie.addEventListener("mouseout", () => {
+        descBox.style.display = "none";
+    });
+});
+
     </script>
+  <script>
+  const menuBtn = document.getElementById("menuBtn");
+  const sidebar = document.getElementById("sidebar");
+
+  menuBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+  });
+</script>
+
+
+</body>
+<script>
+  const dropdown = document.querySelectorAll(".dropdown");
+
+  dropdown.forEach(item => {
+    const dropdownBtn = item.querySelector(".dropbtn");
+    const dropdownContent = item.querySelector(".dropdown-content");
+
+    dropdownBtn.addEventListener("click", () => {
+      dropdownContent.classList.toggle("show");
+    });
+  });
+  
+</script>
+
+    </div>
+        <footer>© 2025 Cineverse. All rights reserved.</footer>
 
 </body>
 </html>

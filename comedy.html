@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Imperial+Script&family=Rubik+Glitch&family=Splash&display=swap" rel="stylesheet">
+
     <title>Comedy</title>
     <style>
+        h1{
+            font-family: 'Bangers', cursive;
+            margin-top: 10px;
+            font-size: 60px;
+            color: white;
+            text-shadow:
+            -2px -2px 0 #000,
+             2px -2px 0 #000,
+            -2px 2px 0 #000,
+             2px 2px 0 #000;
+        }
         body {
                background-image: url(https://media1.tenor.com/m/TtfLAXjY4WgAAAAC/shrek-chair.gif);
             background-repeat: no-repeat;
             background-size: cover;
-    
+            min-height: 100vh;
+
             color: white;
             font-family: Arial;
             margin: 0;
@@ -33,7 +49,7 @@
             border-radius: 10px;
             font-weight: bold;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             cursor: pointer;
             position: relative;
@@ -44,19 +60,124 @@
             transform: scale(1.08);
         }
 
-        .description {
-            position: fixed;
-            bottom: 40px;
-            width: 400px;
-            background: white;
-            color: black;
-            padding: 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            text-align: center;
-            display: none;
-            box-shadow: 0 0 10px rgba(255,255,255,0.4);
-        }
+              .description {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: left;
+    display: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 15;
+}
+
+.description h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.description p {
+    margin: 5px 0;
+}
+
+.description strong {
+    font-weight: bold;
+}
+             #menuBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 20;
+    user-select: none;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px; 
+    width: 250px;
+    height: 100vh;
+    background: #850404;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    transition: right 0.3s ease;
+    z-index: 10;
+}
+
+#sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 20px;
+    transition: background 0.2s;
+}
+
+#sidebar a:hover {
+    text-decoration: underline;
+    text-transform: bold;
+}
+
+#sidebar.open {
+    right: 0;
+}
+
+    .dropdown {
+    position: relative;
+    margin-top: 175px;
+}
+
+.dropbtn {
+    background-color: #850404;
+    color: white;
+    padding: 15px 25px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #3a0808;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #200202;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    text-decoration: underline;
+}
+
+.dropdown-content.show {
+    display: block;
+}
     </style>
 </head>
 <body>
@@ -64,34 +185,92 @@
     <h1>Select a Movie!</h1>
 
     <div class="movie-container">
-        <div class="movie" data-desc="Description of Movie 1"><img src="https://www.slashfilm.com/wp/wp-content/images/scott_pilgrim_vs_the_world_teaser_poster_1.jpg" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 2"><img src="https://image.tmdb.org/t/p/original/lAyE7hrV1Q2QmjzccWy8VLiIS2n.jpg" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 3"><img src="https://image.tmdb.org/t/p/original/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 4"><img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p28447_p_v8_ax.jpg" height="350" width="250"></div>
-        <div class="movie" data-desc="Description of Movie 5"><img src="https://image.tmdb.org/t/p/original/dNho1qVCHq5RpLQNbGTljTfqnva.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="Scott Pilgrim VS. The World (PG-13)| As bass guitarist for a garage-rock band, Scott Pilgrim (Michael Cera) has never had trouble getting a girlfriend; usually, the problem is getting rid of them. But when Ramona Flowers (Mary Elizabeth Winstead) skates into his heart, he finds she has the most troublesome baggage of all: an army of ex-boyfriends who will stop at nothing to eliminate him from her list of suitors. | Michael Cera, Mary Elizabeth Winstead, Kieran Culkin, Chris Evans, Anna Kendrick, Alison Pill, Brandon Routh, Jason Schwartzman | 7.5/10 on IMDb, 83% on Rotten Tomatoes"><img src="https://www.slashfilm.com/wp/wp-content/images/scott_pilgrim_vs_the_world_teaser_poster_1.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="White Chicks (PG-13)| Two FBI agent brothers, Marcus (Marlon Wayans) and Kevin Copeland (Shawn Wayans), accidentally foil a drug bust. As punishment, they are forced to escort a pair of socialites (Anne Dudek, Rochelle Aytes) to the Hamptons, where they're going to be used as bait for a kidnapper. But when the girls realize the FBI's plan, they refuse to go. Left without options, Marcus and Kevin decide to pose as the sisters, transforming themselves from African-American men into a pair of blonde, white women.| Shawn Wayans, Marlon Wayans, Jaime King, Frankie Faison, Lochlyn Munro, John Heard | 5.9/10 on IMDb, 15% on Rotten Tomatoes"><img src="https://image.tmdb.org/t/p/original/lAyE7hrV1Q2QmjzccWy8VLiIS2n.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="Shrek (PG)| Once upon a time, in a far away swamp, there lived an ogre named Shrek whose precious solitude is suddenly shattered by an invasion of annoying fairy tale characters. They were all banished from their kingdom by the evil Lord Farquaad. Determined to save their home, not to mention his, Shrek cuts a deal with Farquaad and sets out to rescue Princess Fiona to be Farquaad's bride. Rescuing the Princess may be small compared to her deep, dark secret.| Mike Myers, Eddie Murphy, Cameron Diaz, John Lithgow | 7.9/10 on IMDb, 88% on Rotten Tomatoes"><img src="https://image.tmdb.org/t/p/original/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="Zoolander (PG-13)| Propelled to the top of the fashion world by a photogenic gaze he calls Blue Steel, dimwitted male model Derek Zoolander (Ben Stiller) thinks he's got a fourth consecutive win as Male Model of the Year in the bag. But, when his rival, Hansel (Owen Wilson), unexpectedly takes the crown, Derek is crushed. He becomes easy prey for fashion designer Jacobim Mugatu (Will Ferrell), who signs Derek to star in his Derelicte fashion show, then brainwashes him to kill Malaysia's prime minister. | Ben Stiller, Owen Wilson, Will Ferrell, Christine Taylor,Milla Jovovich,Jerry Stiller,Jon Voight| 6.5/10 on IMDb ,64% on Rotten Tomatoes"><img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p28447_p_v8_ax.jpg" height="350" width="250"></div>
+        <div class="movie" data-desc="SLC Punk! (R)| Two former geeks become 1980s punks , then party and go to concerts while deciding what to do with their lives . | Matthew Lillard , Michael Goorjian , Annabeth Gish , Jennifer Lien , Christopher McDonald , Devon Sawa , Adam Pascal , Jason Segel , Til Schweiger | 7.4/10 on IMDb , 62% on Rotten Tomatoes"><img src="https://image.tmdb.org/t/p/original/dNho1qVCHq5RpLQNbGTljTfqnva.jpg" height="350" width="250"></div>
     </div>
 
     <div class="description" id="descriptionBox"></div>
+    <a href="homepage.html">
+  <img src="logo.png" alt="CineVerse Logo" style="position: absolute; top: 20px; left: 20px; width: 150px; z-index: 5;"></a>
+
+<div id="menuBtn">
+    ☰
+</div>
+<div id="sidebar">
+    <img src="logo.png" alt="CineVerse Logo" style="position: absolute; top: 20px; left: 20px; width: 150px; z-index: 5;">
+
+    <a href="sources.html" style="position: absolute; z-index: 5; margin-top: 40px;">
+        Sources!
+    </a>
+
+    <a href="aboutus.html" style="position: absolute; z-index: 5; margin-top: 100px;">
+        About Us!
+    </a>
+     <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Genre Shortcut :3</a>
+        <div class="dropdown-content">
+            <a href="action.html">Action</a>
+            <a href="horror.html">Horror</a>
+            <a href="romance.html">Romance</a>
+            <a href="comedy.html">Comedy</a>
+        </div>
 
     <script>
-        const movies = document.querySelectorAll(".movie");
-        const descBox = document.getElementById("descriptionBox");
+         const movies = document.querySelectorAll(".movie");
+const descBox = document.getElementById("descriptionBox");
 
-        movies.forEach(movie => {
-            movie.addEventListener("mouseover", () => {
-                descBox.style.display = "block";
-                descBox.textContent = movie.getAttribute("data-desc");
-            });
+movies.forEach(movie => {
+    movie.addEventListener("mouseover", () => {
+        const movieDetails = movie.getAttribute("data-desc").split("|");
 
-            movie.addEventListener("mouseout", () => {
-                descBox.style.display = "none";
-            });
+        const title = movieDetails[0];
+        const synopsis = movieDetails[1];
+        const cast = movieDetails[2];
+        const rating = movieDetails[3];
 
-            movie.addEventListener("click", () => {
-                alert(movie.textContent + "   Must like this movie huh? :D");
-            });
-        });
+        descBox.innerHTML = `
+            <h3>${title}</h3>
+            <p><strong>Synopsis:</strong> ${synopsis}</p>
+            <p><strong>Cast:</strong> ${cast}</p>
+            <p><strong>Rating:</strong> ${rating}</p>
+        `;
+
+        descBox.style.display = "block";
+    });
+
+    movie.addEventListener("mouseout", () => {
+        descBox.style.display = "none";
+    });
+});
     </script>
+  <script>
+  const menuBtn = document.getElementById("menuBtn");
+  const sidebar = document.getElementById("sidebar");
+
+  menuBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+  });
+</script>
+</body>
+<script>
+  const dropdown = document.querySelectorAll(".dropdown");
+
+  dropdown.forEach(item => {
+    const dropdownBtn = item.querySelector(".dropbtn");
+    const dropdownContent = item.querySelector(".dropdown-content");
+
+    dropdownBtn.addEventListener("click", () => {
+      dropdownContent.classList.toggle("show");
+    });
+  });
+  
+</script>
+
+    </div>
+        <footer>© 2025 Cineverse. All rights reserved.</footer>
 
 </body>
 </html>

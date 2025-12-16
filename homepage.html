@@ -8,8 +8,20 @@ document.addEventListener("click", () => {
 </script>
 
 <head>
-    <title>Cinema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Imperial+Script&family=Rubik+Glitch&family=Splash&family=Limelight&display=swap" rel="stylesheet">
+
+
+    <title>CineVerse</title>
     <style>
+        h1{
+            margin-top: -90px;
+            font-family: 'Limelight', cursive;
+            font-size: 75px;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
         body {
             display: flex;
             flex-direction: column;
@@ -23,6 +35,13 @@ document.addEventListener("click", () => {
             overflow: hidden;
         }
         
+        #curtainWrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+}
+
 
     .curtain {
     position: fixed;
@@ -32,6 +51,17 @@ document.addEventListener("click", () => {
     background: linear-gradient(#700, #400);
     z-index: 10;
 }
+
+#curtainImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: fadeCurtainImage 2s forwards ease-in-out;
+    z-index: 20;
+}
+
 
 #curtainLeft { left: 0; }
 #curtainRight { right: 0; }
@@ -48,7 +78,7 @@ document.addEventListener("click", () => {
         .screen {
             position: relative;
             width: 70%;
-            height: 330px;
+            height: 450px;
             background: #222;
             border: 5px solid #555;
             border-radius: 10px;
@@ -56,6 +86,29 @@ document.addEventListener("click", () => {
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: background 0.6s ease-in-out;    
+        }
+        .screen.action {
+         background: linear-gradient(135deg, #032884, #01031f);
+         font-family: 'Rubik Glitch', cursive;
+                }
+
+        .screen.horror {
+        background: linear-gradient(135deg, #000000, #260000);
+        font-family: 'Splash', cursive;
+        color: #780000;
+        text-shadow: 2px 2px 5px  #260000;
+        }
+
+        .screen.romance {
+        background: linear-gradient(135deg, #cf0000, #ff4f9a);
+        font-family: 'Imperial Script', cursive;
+        color:white
+        }
+
+        .screen.comedy {
+        background: linear-gradient(135deg, #ff7700, #ffcc00);
+        font-family: 'Bangers', cursive;
         }
 
         .projector-beam {
@@ -110,6 +163,12 @@ document.addEventListener("click", () => {
             0% { transform: translateX(0); opacity: 1; }
             100% { transform: translateX(100%); opacity: 0; }
         }
+        @keyframes fadeCurtainImage {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 
         .arrow {
             position: absolute;
@@ -156,12 +215,101 @@ document.addEventListener("click", () => {
             border-radius: 10px 10px 0 0;
             box-shadow: 0 -5px 10px rgba(66, 1, 1, 0.5);
         }
+
+        .chairs2{
+            margin-left: 200px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            gap: 8px;
+            z-index: 0;
+        }
+
+        .chairs3{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: right;
+            gap: 8px;
+            z-index: 0;
+            margin-left: 320px;
+        }
+
+        #menuBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 20;
+    user-select: none;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px; 
+    width: 250px;
+    height: 100vh;
+    background: #850404;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    transition: right 0.3s ease;
+    z-index: 10;
+}
+
+#sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 20px;
+    transition: background 0.2s;
+}
+
+#sidebar a:hover {
+    text-decoration: underline;
+    text-transform: bold;
+}
+
+#sidebar.open {
+    right: 0;
+}
+
 </style>
 </head>
 <body>
 
+    <h1>Select a Genre!</h1>
+
+<div id="menuBtn">
+    ☰
+</div>
+<div id="sidebar">
+    <img src="logo.png" alt="CineVerse Logo" style="position: absolute; top: 20px; left: 20px; width: 150px; z-index: 5;">
+
+    <a href="sources.html" style="position: absolute; z-index: 5; margin-top: 40px;">
+        Sources!
+    </a>
+
+    <a href="aboutus.html" style="position: absolute; z-index: 5; margin-top: 100px;">
+        About Us!
+    </a>
+</div>
+   
+</a>
+   <div id="curtainWrapper">
     <div id="curtainLeft" class="curtain"></div>
     <div id="curtainRight" class="curtain"></div>
+
+    <img id="curtainImage" src="logo.png" alt="Curtain Overlay">
+</div>
+
 
     <div class="screen">
         <div class="projector-beam"></div>
@@ -176,6 +324,13 @@ document.addEventListener("click", () => {
 
 
     <script>
+
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+
+menuBtn.onclick = () => {
+    sidebar.classList.toggle("open");
+};
 
 let slide = 1;
 const slides = ["Action", "Horror", "Romance", "Comedy"]; 
@@ -193,6 +348,7 @@ function changeSlide(direction) {
     if (slide > totalSlides) slide = 1;
 
     slideBox.textContent = slides[slide - 1];
+    updateBackground();
 
     slideBox.classList.add(direction === "left" ? "slide-in-right" : "slide-in-left");
 
@@ -200,6 +356,16 @@ function changeSlide(direction) {
         old.remove(); 
         slideBox.classList.remove("slide-in-right", "slide-in-left"); 
     }, 600);
+}
+
+const screen = document.querySelector(".screen");
+
+function updateBackground() {
+    screen.className = "screen"; // reset
+    if (slide === 1) screen.classList.add("action");
+    if (slide === 2) screen.classList.add("horror");
+    if (slide === 3) screen.classList.add("romance");
+    if (slide === 4) screen.classList.add("comedy");
 }
 
 document.getElementById("leftArrow").onclick = () => changeSlide("left");
@@ -212,6 +378,9 @@ document.getElementById("rightArrow").onclick = () => changeSlide("right");
             if (slide === 3) window.location.href = "romance.html";
             if (slide === 4) window.location.href = "comedy.html";
         }
+        
+        updateBackground();
+
     </script>
 
     <div class="chairs">
@@ -227,8 +396,40 @@ document.getElementById("rightArrow").onclick = () => changeSlide("right");
             <div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div>
             <div class="seat"></div><div class="seat"></div><div class="seat"></div><div class="seat"></div>
         </div>
+        
+        
     </div>
-
+        <div class="chairs2">
+        <div class="row">
+            <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+            <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+        </div>
+        <div class="row">
+         <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+            <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+            <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+        </div>
+    </div>
+<div>
+        <div class="chairs3">
+        <div class="row">
+            <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+            <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+        </div>
+        <div class="row">
+         <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+            <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+            <div class="seat"></div><div class="seat"></div> <div class="seat"></div>
+        </div>
+    
 </div>
+    <footer>© 2025 Cineverse. All rights reserved.</footer>
+
 </body>
 </html>
