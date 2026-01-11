@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Imperial+Script&family=Rubik+Glitch&family=Splash&family=Limelight&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sources</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+        }
+
+        header {
+            background: #510303;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            z-index: 20;
+        }
+
+        header img {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 150px;
+            z-index: 100;  /* Make sure the logo in the header is always visible */
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            text-align: center;
+            background: #a91717;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            text-align: center;
+            color: white;
+            text-transform: bold;
+        }
+
+        h1 {
+            font-family: 'Limelight', cursive;
+            font-size: 40px;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        #menuBtn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 32px;
+            cursor: pointer;
+            z-index: 20;
+            user-select: none;
+        }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            right: -250px; 
+            width: 250px;
+            height: 100vh;
+            background: #850404;
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px;
+            transition: right 0.3s ease;
+            z-index: 10;  /* Sidebar stays below the logo */
+        }
+
+        #sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-size: 20px;
+            transition: background 0.2s;
+        }
+
+        #sidebar a:hover {
+            text-decoration: underline;
+            text-transform: bold;
+        }
+
+        #sidebar.open {
+            right: 0;
+        }
+
+        .dropdown {
+            position: relative;
+            margin-top: 175px;
+        }
+
+        .dropbtn {
+            background-color: #850404;
+            color: white;
+            padding: 15px 25px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #3a0808;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #200202;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            text-decoration: underline;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        /* Logo in Sidebar */
+        .logo img {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 150px;
+            z-index: 100;  /* Ensure the logo in the sidebar is above other content */
+        }
+       
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sources</h1>
+    </header>
+    
+    <main>
+        <p>Below are the sources used in this project :3</p>
+        <ul>
+            <li>CSS Fog Animation (no JS). (n.d.). CodePen. https://codepen.io/braedencraig/pen/dBVKzO</li>
+            <li>Rotten Tomatoes: movies | TV shows | Movie trailers | reviews. (n.d.). Rotten Tomatoes. https://www.rottentomatoes.com/</li>
+            <li>IMDB: Ratings, reviews, and where to watch the best movies & TV shows. (n.d.). IMDb. https://www.imdb.com/</li>
+            <li>Wikipedia. (n.d.). Wikipedia. https://www.wikipedia.org/</li>
+            <li>Google Images. (n.d.). Google. https://images.google.com/</li>
+            <li>Tenor GIFs. (n.d.). Tenor. https://tenor.com/</li>
+            <li>Font Google. (n.d.). Google Fonts. https://fonts.google.com/</li>
+            <li>Layouts | SpaceHey. (n.d.). SpaceHey. https://layouts.spacehey.com/</li>
+        </ul>
+    </main>
+
+    <a href="index.html">
+  <img src="logo.png" alt="CineVerse Logo" style="position: absolute; top: 20px; left: 20px; width: 150px; z-index: 5;"></a>
+  
+
+    <div id="menuBtn">☰</div>
+    <div id="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="CineVerse Logo" style="position: absolute; top: 20px; left: 20px; width: 150px; z-index: 100;">
+        </div>
+        <a href="sources.html" style="position: absolute; z-index: 5; margin-top: 40px;">Sources!</a>
+        <a href="aboutus.html" style="position: absolute; z-index: 5; margin-top: 100px;">About Us!</a>
+        <div class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Genre Shortcut :3</a>
+            <div class="dropdown-content">
+                <a href="action.html">Action</a>
+                <a href="horror.html">Horror</a>
+                <a href="romance.html">Romance</a>
+                <a href="comedy.html">Comedy</a>
+            </div>
+        </div>
+
+        <script>
+            const menuBtn = document.getElementById("menuBtn");
+            const sidebar = document.getElementById("sidebar");
+
+            menuBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("open");
+            });
+        </script>
+    </div>
+
+    <footer>© 2025 Cineverse. All rights reserved.</footer>
+</body>
+</html>
