@@ -45,4 +45,20 @@
 ##### P5(Sources and About Us):
 ![aboutus](aboutus.png)
 
-# 
+
+## Final Title: CineVerse (Update!)
+
+#### CineVerse has been upgraded with mobile compatibility, improved visuals, and new interactive pages. Users can now submit personal movie recommendations and ratings, which are then displayed in a padlet-style board for others to view.
+
+### New Features: 
+#### - Works on mobile devices
+##### The site is now fully responsive, making it easy to use on phones and tablets.
+#### - Takes user input 
+##### A dedicated page lets users enter movie titles, recommendations, and ratings.
+#####  Submitted entries appear as cards on a padlet-like board, allowing easy browsing of everyone’s suggestions.
+#### - Improved visuals
+##### Updated colors, fonts, and layout create a cleaner and more engaging look.
+
+### Definition of done:
+#### - All new features are done and works well.
+#### - Both members of the pair are satisfied.
