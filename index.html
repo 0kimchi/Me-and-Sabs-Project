@@ -269,19 +269,25 @@ document.addEventListener("click", () => {
 #appWrapper {
     width: 1920px;
     height: 1080px;
+    position: relative;
     transform-origin: top left;
 }
 
-@media (max-width: 1920px) {
-    #appWrapper {
-        transform: scale(calc(100vw / 1920));
-    }
-
-    body {
-        overflow: hidden;
-    }
+/* Make body center it */
+body {
+    margin: 0;
+    overflow: hidden;
 }
 
+/* Mobile & smaller screens */
+@media (max-width: 1920px) {
+    #appWrapper {
+        transform: scale(min(
+            calc(100vw / 1920),
+            calc(100vh / 1080)
+        ));
+    }
+}
 </style>
 </head>
 <body>
@@ -386,6 +392,6 @@ document.getElementById("rightArrow").onclick = () => changeSlide("right");
     </script>
 
     <footer>© 2025 Cineverse. All rights reserved.</footer>
-</div>
+    </div>
 </body>
 </html>
