@@ -8,6 +8,7 @@ document.addEventListener("click", () => {
 </script>
 
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="logo.png" type="image/png">
 <link rel="apple-touch-icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -265,11 +266,26 @@ document.addEventListener("click", () => {
 #sidebar.open {
     right: 0;
 }
+#appWrapper {
+    width: 1920px;
+    height: 1080px;
+    transform-origin: top left;
+}
+
+@media (max-width: 1920px) {
+    #appWrapper {
+        transform: scale(calc(100vw / 1920));
+    }
+
+    body {
+        overflow: hidden;
+    }
+}
 
 </style>
 </head>
 <body>
-
+<div id="appWrapper">
 <div id="menuBtn">
     ☰
 </div>
@@ -370,6 +386,6 @@ document.getElementById("rightArrow").onclick = () => changeSlide("right");
     </script>
 
     <footer>© 2025 Cineverse. All rights reserved.</footer>
-
+</div>
 </body>
 </html>
