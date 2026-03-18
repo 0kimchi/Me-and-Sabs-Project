@@ -70,4 +70,4 @@
 #### - All new features are done and works well.
 #### - Both members of the pair are satisfied.
 
-#### Submitted by Summer Guevarra & Sabella Alpasan on March 18, 2026 to Sir Roy Canseco in Partial fulfillment of the requirements of CS 3 of DOST-PSHS-MC.
+#### Submitted by Summer Guevarra & Sabella Alpasan on March 18, 2026 to Sir Roy Canseco in partial fulfillment of the requirements of CS 3 of DOST-PSHS-MC.
