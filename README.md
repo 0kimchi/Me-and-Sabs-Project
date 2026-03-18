@@ -2,16 +2,23 @@
 # CineVerse
 ### Personal Movie Reccomendations!
 
-
-#### Logo:
-
-
-![logo](logo.png)
-
-
 #### Description
 ### This webpage aims to personally reccomend movies on each given genre that we found interesting and most eye catching! 
 
+##### This project is for movie lovers, and people who want personal movie reccomendations instead of ones off of google.This project will surely benefit them as it not only shows movie reccomendations, but also their ratings and short description of the each movie in different genres. These details highlight the personal aspect of the project as it really shows the thought and consideration put upon it.
+
+##### Movie lovers will love this project as it has other features like user reccomendations. Movie lovers who visit our project website can also reccomend their own favourite movies in any genre, and add their own thoughts/input on that movie! Our project website is also easy to access and navigate through so even movie lovers who aren't tech savy would have no problem skimming through our website. Lastly, each genre in our project has its own design and theme. This makes it more creative and really feel like the genre itself.
+
+##### This project does NOT include:
+###### - Trailers of each movie (We'd love to add movie trailers for each movie to have more engagment with the movie we're reccomending in the future if possible)
+
+###### - Annual Movie reccomendation updates (This would make our project be useful in the long run, but we have no recent plans on doing so. Though if ever, it won't be a difficult thing to change!)
+
+
+
+#### Logo:
+
+![logo](logo.png)
 
 #### Webpage Breakdown
 ##### Homepage: The homepage will be a 90s cinema theater entrance with 4 movie posters representing each genre featured.
@@ -62,3 +69,5 @@
 ### Definition of done:
 #### - All new features are done and works well.
 #### - Both members of the pair are satisfied.
+
+#### Submitted by Summer Guevarra & Sabella Alpasan on March 18, 2026 to Sir Roy Canseco in Partial fulfillment of the requirements of CS 3 of DOST-PSHS-MC.
