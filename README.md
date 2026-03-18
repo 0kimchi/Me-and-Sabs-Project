@@ -10,9 +10,9 @@
 ##### Movie lovers will love this project as it has other features like user reccomendations. Movie lovers who visit our project website can also reccomend their own favourite movies in any genre, and add their own thoughts/input on that movie! Our project website is also easy to access and navigate through so even movie lovers who aren't tech savy would have no problem skimming through our website. Lastly, each genre in our project has its own design and theme. This makes it more creative and really feel like the genre itself.
 
 ##### This project does NOT include:
-###### - Trailers of each movie (We'd love to add movie trailers for each movie to have more engagment with the movie we're reccomending in the future if possible)
+##### - Trailers of each movie (We'd love to add movie trailers for each movie to have more engagment with the movie we're reccomending in the future if possible)
 
-###### - Annual Movie reccomendation updates (This would make our project be useful in the long run, but we have no recent plans on doing so. Though if ever, it won't be a difficult thing to change!)
+##### - Annual Movie reccomendation updates (This would make our project be useful in the long run, but we have no recent plans on doing so. Though if ever, it won't be a difficult thing to change!)
 
 
 
