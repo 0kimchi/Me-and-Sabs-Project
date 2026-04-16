@@ -71,23 +71,24 @@
             gap: 1rem;
         }
 
-        .padlet-item {
-            background: #fff;
-            color: #111
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+.padlet-item {
+    background: #fff;
+    color: #111;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
 
-        .padlet-item h3 {
-            margin: 0 0 0.3rem;
-            color: #111
-        }   
+.padlet-item h3 {
+    margin: 0 0 0.3rem;
+    color: #111;
+}
 
-        .padlet-item p {
-            margin: 0.3rem 0;
-            color: #111
-        }
+.padlet-item p {
+    margin: 0.3rem 0;
+    color: #111;
+}
 
         .padlet-item .rating {
             color: gold;
@@ -98,6 +99,24 @@
     color: #820000;
     font-weight: bold;
 }
+
+.padlet-item .delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #820000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.padlet-item .delete-btn:hover {
+    background: #a50000;
+}
+
 #menuBtn {
     position: fixed;
     top: 20px;
@@ -271,6 +290,56 @@ function updateStars() {
 const form = document.getElementById("recommendationForm");
 const padlet = document.getElementById("padlet");
 
+document.addEventListener("DOMContentLoaded", loadRecommendations);
+
+function loadRecommendations() {
+    const saved = JSON.parse(localStorage.getItem("recommendations")) || [];
+    saved.forEach((item, index) => displayRecommendation(item, index));
+}
+
+function saveRecommendation(data) {
+    const saved = JSON.parse(localStorage.getItem("recommendations")) || [];
+    saved.unshift(data);
+    localStorage.setItem("recommendations", JSON.stringify(saved));
+}
+
+function deleteRecommendation(index) {
+    const saved = JSON.parse(localStorage.getItem("recommendations")) || [];
+    saved.splice(index, 1);
+    localStorage.setItem("recommendations", JSON.stringify(saved));
+}
+
+function displayRecommendation(data, index) {
+    const padletItem = document.createElement("div");
+    padletItem.classList.add("padlet-item");
+    padletItem.dataset.index = index;
+
+    padletItem.innerHTML = `
+        <button class="delete-btn" onclick="confirmDelete(${index})">Delete</button>
+        <p class="user">🎬 ${data.userName} recommends:</p>
+        <h3>${data.movieName}</h3>
+        <p class="rating">
+            ${"★".repeat(data.rating)}${"☆".repeat(5 - data.rating)}
+        </p>
+        <p>${data.thoughts}</p>
+    `;
+
+    padlet.prepend(padletItem);
+}
+
+function confirmDelete(index) {
+    const confirmed = confirm("Are you sure you want to delete this recommendation?");
+    if (confirmed) {
+        const padletItems = document.querySelectorAll(".padlet-item");
+        padletItems.forEach(item => {
+            if (parseInt(item.dataset.index) === index) {
+                item.remove();
+            }
+        });
+        deleteRecommendation(index);
+    }
+}
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -283,24 +352,34 @@ form.addEventListener("submit", (e) => {
         return;
     }
 
-    const padletItem = document.createElement("div");
-    padletItem.classList.add("padlet-item");
+    const recommendationData = {
+        userName,
+        movieName,
+        thoughts,
+        rating: selectedRating
+    };
 
-    padletItem.innerHTML = `
-        <p class="user">🎬 ${userName} recommends:</p>
-        <h3>${movieName}</h3>
-        <p class="rating">
-            ${"★".repeat(selectedRating)}${"☆".repeat(5 - selectedRating)}
-        </p>
-        <p>${thoughts}</p>
-    `;
+    const saved = JSON.parse(localStorage.getItem("recommendations")) || [];
+    displayRecommendation(recommendationData, 0);
+    saveRecommendation(recommendationData);
 
-    padlet.prepend(padletItem);
+    // Update indices for all displayed items
+    updateAllIndices();
 
     form.reset();
     selectedRating = 0;
     updateStars();
 });
+
+function updateAllIndices() {
+    const padletItems = document.querySelectorAll(".padlet-item");
+    const saved = JSON.parse(localStorage.getItem("recommendations")) || [];
+    padletItems.forEach((item, idx) => {
+        item.dataset.index = idx;
+        const deleteBtn = item.querySelector(".delete-btn");
+        deleteBtn.setAttribute("onclick", `confirmDelete(${idx})`);
+    });
+}
 </script>
 
 </body>
